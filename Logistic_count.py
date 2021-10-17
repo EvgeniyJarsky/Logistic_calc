@@ -54,11 +54,15 @@ class LogisticCalc(QWidget):
 
         self.broker = QLabel("Посреднику")
         self.broker_value = QLineEdit("1000")
+        self.broker_value.editingFinished.connect(self.calculate)
+        self.broker_value.returnPressed.connect(self.calculate)
         self.slider = QSlider()
 
 
         self.input_txt = QLineEdit()
         self.input_txt.setText('30000')
+        self.input_txt.editingFinished.connect(self.calculate)
+        self.input_txt.returnPressed.connect(self.calculate)
         self.input_txt.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         vertical_layout2 = QVBoxLayout()
