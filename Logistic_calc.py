@@ -25,26 +25,31 @@ class LogisticCalc(QWidget):
         horizontal_layout1 = QHBoxLayout()
         horizontal_layout2 = QHBoxLayout()
         horizontal_layout_for_but = QHBoxLayout()
+        horizontal_layout_for_but2 = QHBoxLayout()
         horizontal_layout_for_input = QHBoxLayout()
 
         but = QPushButton("Рассчитать ставку")
         but.clicked.connect(self.calculate)
 
+        price_lab = QLabel("Цена")
+
 
 
         but_1000_minus = QPushButton("-1000")
         but_1000_minus.clicked.connect(self.minus_1000)
-        # but_100_minus = QPushButton("-100")
-        # but_100_minus.clicked.connect(self.minus_100)
-        # but_100_plus = QPushButton("+100")
-        # but_100_plus.clicked.connect(self.plus_100)
         but_1000_plus = QPushButton("+1000")
         but_1000_plus.clicked.connect(self.plus_1000)
 
+        but2_1000_minus = QPushButton("-1000")
+        but2_1000_minus.clicked.connect(self.minus2_1000)
+        but2_1000_plus = QPushButton("+1000")
+        but2_1000_plus.clicked.connect(self.plus2_1000)
+
         horizontal_layout_for_but.addWidget(but_1000_minus)
-        # horizontal_layout_for_but.addWidget(but_100_minus)
-        # horizontal_layout_for_but.addWidget(but_100_plus)
         horizontal_layout_for_but.addWidget(but_1000_plus)
+
+        horizontal_layout_for_but2.addWidget(but2_1000_minus)
+        horizontal_layout_for_but2.addWidget(but2_1000_plus)
 
         without_nds_lab = QLabel('Ставка без НДС')
         with_nds_lab = QLabel('Ставка с НДС')
@@ -66,12 +71,19 @@ class LogisticCalc(QWidget):
         self.input_txt.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         vertical_layout2 = QVBoxLayout()
+        vertical_layout2.addWidget(price_lab)
         vertical_layout2.addWidget(self.input_txt)
         vertical_layout2.addLayout(horizontal_layout_for_but)
 
+        vertical_layout3 = QVBoxLayout()
+        vertical_layout3.addWidget(self.broker)
+        vertical_layout3.addWidget(self.broker_value)
+        vertical_layout3.addLayout(horizontal_layout_for_but2)
+
         horizontal_layout_for_input.addLayout(vertical_layout2)
-        horizontal_layout_for_input.addWidget(self.broker)
-        horizontal_layout_for_input.addWidget(self.broker_value)
+        horizontal_layout_for_input.addLayout(vertical_layout3)
+        # horizontal_layout_for_input.addWidget(self.broker)
+        # horizontal_layout_for_input.addWidget(self.broker_value)
 
         horizontal_layout1.addWidget(without_nds_lab)
         horizontal_layout1.addWidget(self.without_nds_rez)
@@ -112,11 +124,11 @@ class LogisticCalc(QWidget):
             self.without_nds_rez.setText("Введите десятичное число")
 
 
-    def minus_100(self):
-        number = self.input_txt.text()
+    def minus2_1000(self):
+        number = self.broker_value.text()
         number = int(number)
-        rez = str(number - 100)
-        self.input_txt.setText(rez)
+        rez = str(number - 1000)
+        self.broker_value.setText(rez)
         self.calculate()
 
     def minus_1000(self):
@@ -126,11 +138,11 @@ class LogisticCalc(QWidget):
         self.input_txt.setText(rez)
         self.calculate()
 
-    def plus_100(self):
-        number = self.input_txt.text()
+    def plus2_1000(self):
+        number = self.broker_value.text()
         number = int(number)
-        rez = str(number + 100)
-        self.input_txt.setText(rez)
+        rez = str(number + 1000)
+        self.broker_value.setText(rez)
         self.calculate()
 
     def plus_1000(self):
