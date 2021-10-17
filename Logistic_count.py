@@ -7,7 +7,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 
 
-class Example(QWidget):
+class LogisticCalc(QWidget):
 
     def __init__(self):
         super().__init__()
@@ -34,16 +34,16 @@ class Example(QWidget):
 
         but_1000_minus = QPushButton("-1000")
         but_1000_minus.clicked.connect(self.minus_1000)
-        but_100_minus = QPushButton("-100")
-        but_100_minus.clicked.connect(self.minus_100)
-        but_100_plus = QPushButton("+100")
-        but_100_plus.clicked.connect(self.plus_100)
+        # but_100_minus = QPushButton("-100")
+        # but_100_minus.clicked.connect(self.minus_100)
+        # but_100_plus = QPushButton("+100")
+        # but_100_plus.clicked.connect(self.plus_100)
         but_1000_plus = QPushButton("+1000")
         but_1000_plus.clicked.connect(self.plus_1000)
 
         horizontal_layout_for_but.addWidget(but_1000_minus)
-        horizontal_layout_for_but.addWidget(but_100_minus)
-        horizontal_layout_for_but.addWidget(but_100_plus)
+        # horizontal_layout_for_but.addWidget(but_100_minus)
+        # horizontal_layout_for_but.addWidget(but_100_plus)
         horizontal_layout_for_but.addWidget(but_1000_plus)
 
         without_nds_lab = QLabel('Ставка без НДС')
@@ -133,5 +133,5 @@ class Example(QWidget):
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)
-    ex = Example()
+    ex =LogisticCalc()
     sys.exit(app.exec_())
